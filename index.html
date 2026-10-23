@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRUJAN '26 - Govindram Seksaria Science Autonomous College</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            purple: '#8b5cf6',
+                            pink: '#ec4899',
+                            cyan: '#06b6d4',
+                            amber: '#f59e0b',
+                            dark: '#0f172a',
+                            card: '#1e293b'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 3s infinite alternate',
+                        'float': 'float 4s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                            '0%': { boxShadow: '0 0 15px rgba(139, 92, 246, 0.3)' },
+                            '100%': { boxShadow: '0 0 30px rgba(236, 72, 153, 0.6)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-8px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Font: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0f19;
+            background-image: linear-gradient(rgba(11, 15, 25, 0.72), rgba(11, 15, 25, 0.88)), url("img/srujanMainBanner.jpeg");
+            background-position: center top;
+            background-size: cover;
+            background-attachment: fixed;
+            color: #f8fafc;
+            min-height: 100vh;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8b5cf6;
+        }
+        /* Glassmorphism effects */
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-pill {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 flex flex-col items-center justify-start min-h-screen pb-16 px-4 sm:px-6 relative overflow-x-hidden selection:bg-purple-500 selection:text-white">
+
+    <!-- Background Decorative Glow Orbs -->
+    <div class="fixed top-[-10%] left-[-10%] w-[45vw] h-[45vw] rounded-full bg-purple-600/20 blur-[120px] pointer-events-none z-0"></div>
+    <div class="fixed bottom-[-10%] right-[-10%] w-[45vw] h-[45vw] rounded-full bg-pink-600/15 blur-[120px] pointer-events-none z-0"></div>
+    <div class="fixed top-[40%] right-[5%] w-[30vw] h-[30vw] rounded-full bg-cyan-600/15 blur-[100px] pointer-events-none z-0"></div>
+
+    <!-- Main Container (Link-in-Bio Style Layout) -->
+    <div class="w-full max-w-3xl z-10 my-6 sm:my-10 space-y-8">
+
+        <!-- Header / Navigation Bar -->
+        <header class="glass-panel rounded-2xl p-4 flex justify-between items-center shadow-2xl">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 via-pink-500 to-amber-400 flex items-center justify-center text-white font-black text-xl shadow-lg shadow-purple-500/30">
+                    S
+                </div>
+                <div>
+                    <h2 class="text-xs sm:text-sm font-bold tracking-wider uppercase text-slate-100">Govindram Seksaria Science Autonomous College</h2>
+                    <p class="text-[11px] text-purple-400 font-medium">Organised by GSS Degree</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <button id="share-btn" onclick="copyPageUrl()" class="glass-pill hover:bg-white/10 text-slate-300 hover:text-white p-2.5 rounded-xl transition duration-200 flex items-center gap-2 text-xs font-semibold">
+                    <i class="fa-solid fa-share-nodes text-sm text-purple-400"></i>
+                    <span class="hidden sm:inline">Share Event</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- HERO SECTION -->
+        <section class="glass-panel rounded-3xl p-6 sm:p-10 text-center relative overflow-hidden shadow-2xl border border-white/10">
+            <!-- Subtle gradient mesh backdrop inside card -->
+            <div class="absolute inset-0 bg-gradient-to-b from-purple-900/20 via-pink-900/10 to-amber-900/10 pointer-events-none"></div>
+
+            <!-- College / Organizer Badge -->
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill border border-purple-500/30 text-xs font-semibold text-purple-300 mb-5 shadow-inner">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                Registrations Now Open
+            </div>
+
+            <!-- Event Title -->
+            <h1 class="text-5xl sm:text-7xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-amber-400 mb-2">
+                SRUJAN 2026
+            </h1>
+
+            <!-- Subtitle & Main Tagline -->
+            <p class="text-lg sm:text-2xl font-bold text-amber-300 tracking-wide uppercase mb-1">
+                Unity In Diversity
+            </p>
+            <p class="text-xs sm:text-sm font-medium text-slate-300 italic mb-6">
+                "Different Talents, One Spectrum"
+            </p>
+
+            <!-- Event Details Pill Bar -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-xl mx-auto mb-8 text-xs font-medium text-slate-300">
+                <div class="glass-pill p-3 rounded-xl flex items-center justify-center gap-2">
+                    <i class="fa-regular fa-calendar-days text-pink-400 text-base"></i>
+                    <span class="font-bold text-slate-100">31st October 2026</span>
+                </div>
+                <div class="glass-pill p-3 rounded-xl flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-location-dot text-cyan-400 text-base"></i>
+                    <span>College Campus</span>
+                </div>
+                <div class="glass-pill p-3 rounded-xl flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-users text-amber-400 text-base"></i>
+                    <span>Culture • Talent • Unity</span>
+                </div>
+            </div>
+
+            <!-- Countdown Timer Container -->
+            <div class="pt-2 border-t border-slate-800/80">
+                <p class="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-3">Fest Begins In</p>
+                <div class="flex justify-center items-center gap-3 sm:gap-5 text-center">
+                    <div class="glass-pill px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl min-w-[60px]">
+                        <span id="days" class="text-xl sm:text-2xl font-extrabold text-purple-400">00</span>
+                        <span class="block text-[10px] text-slate-400 uppercase font-medium">Days</span>
+                    </div>
+                    <span class="text-lg font-bold text-slate-600">:</span>
+                    <div class="glass-pill px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl min-w-[60px]">
+                        <span id="hours" class="text-xl sm:text-2xl font-extrabold text-purple-400">00</span>
+                        <span class="block text-[10px] text-slate-400 uppercase font-medium">Hours</span>
+                    </div>
+                    <span class="text-lg font-bold text-slate-600">:</span>
+                    <div class="glass-pill px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl min-w-[60px]">
+                        <span id="minutes" class="text-xl sm:text-2xl font-extrabold text-purple-400">00</span>
+                        <span class="block text-[10px] text-slate-400 uppercase font-medium">Mins</span>
+                    </div>
+                    <span class="text-lg font-bold text-slate-600">:</span>
+                    <div class="glass-pill px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl min-w-[60px]">
+                        <span id="seconds" class="text-xl sm:text-2xl font-extrabold text-pink-400">00</span>
+                        <span class="block text-[10px] text-slate-400 uppercase font-medium">Secs</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Event Pillars / Themes -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center text-xs font-semibold text-slate-300 uppercase tracking-wider">
+            <div class="glass-pill p-3 rounded-xl border border-purple-500/20 text-purple-300">
+                <i class="fa-solid fa-masks-theater mb-1 block text-base text-purple-400"></i> Culture
+            </div>
+            <div class="glass-pill p-3 rounded-xl border border-pink-500/20 text-pink-300">
+                <i class="fa-solid fa-palette mb-1 block text-base text-pink-400"></i> Creativity
+            </div>
+            <div class="glass-pill p-3 rounded-xl border border-cyan-500/20 text-cyan-300">
+                <i class="fa-solid fa-lightbulb mb-1 block text-base text-cyan-400"></i> Curiosity
+            </div>
+            <div class="glass-pill p-3 rounded-xl border border-amber-500/20 text-amber-300">
+                <i class="fa-solid fa-handshake mb-1 block text-base text-amber-400"></i> Connection
+            </div>
+        </div>
+
+        <!-- CATEGORY FILTER TABS -->
+        <div id="activities" class="space-y-4">
+            <div class="flex justify-between items-center">
+                <h3 class="text-lg font-bold text-slate-100 flex items-center gap-2">
+                    <i class="fa-solid fa-star text-amber-400"></i> Events & Competitions
+                </h3>
+                <span class="text-xs text-slate-400" id="activity-count">Showing 9 Events</span>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+                <button onclick="filterCategory('all')" class="filter-btn active px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition duration-200 bg-purple-600 text-white shadow-lg shadow-purple-600/30">
+                    All Events
+                </button>
+                <button onclick="filterCategory('cultural')" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition duration-200 bg-slate-800/80 text-slate-300 hover:bg-slate-700">
+                    <i class="fa-solid fa-music text-pink-400 mr-1.5"></i>Cultural & Stage
+                </button>
+                <button onclick="filterCategory('creative')" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition duration-200 bg-slate-800/80 text-slate-300 hover:bg-slate-700">
+                    <i class="fa-solid fa-palette text-amber-400 mr-1.5"></i>Arts & Design
+                </button>
+                <button onclick="filterCategory('academic')" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition duration-200 bg-slate-800/80 text-slate-300 hover:bg-slate-700">
+                    <i class="fa-solid fa-brain text-cyan-400 mr-1.5"></i>Quiz & Tech
+                </button>
+            </div>
+        </div>
+
+        <!-- ACTIVITIES GRID LAYOUT -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5" id="activities-grid">
+
+            <!-- 1. Cultural Performances -->
+            <div class="activity-card cultural glass-panel rounded-2xl p-5 border border-slate-800 hover:border-pink-500/50 transition duration-300 flex flex-col justify-between group shadow-lg">
+                <div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="px-2.5 py-1 rounded-md bg-pink-500/10 text-pink-400 text-[10px] font-bold uppercase tracking-wider border border-pink-500/20">
+                            <i class="fa-solid fa-music mr-1"></i> Cultural & Stage
+                        </span>
+                        <span class="text-[11px] font-semibold text-emerald-400 flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Open
+                        </span>
+                    </div>
+
+                    <img src="img/retroVsGenZ.png" alt="Retro vs Gen Z dance event poster" class="w-full h-64 object-contain rounded-xl mb-4 bg-slate-950/60">
+
+                    <h4 class="text-xl font-bold text-white group-hover:text-pink-300 transition">Cultural Performances</h4>
+                    
+                    <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+                        Music, Dance, Drama and more! Showcase your performing arts talent on the central main stage.
+                    </p>
+
+                    <div class="mt-4 pt-3 border-t border-slate-800/80 grid grid-cols-2 gap-2 text-[11px] text-slate-300">
+                        <div><i class="fa-regular fa-clock text-purple-400 mr-1"></i> Oct 31, Morning</div>
+                        <div><i class="fa-solid fa-users text-pink-400 mr-1"></i> Solo / Group</div>
+                    </div>
+                </div>
+
+                <div class="mt-5 pt-4 border-t border-slate-800 flex items-center gap-4">
+                    <div class="flex-1 space-y-2">
+                        <a href="https://docs.google.com/forms/d/13gei_pBeiKeaUd4ttcXKmDekl2DNQPTzsEKZdBWXYOQ/edit?ts=6ad89cb5" target="_blank" rel="noopener noreferrer"
+                           class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-500 hover:to-rose-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-pink-600/20 transition active:scale-[0.98]">
+                            <span>Register via Form</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </a>
+                        <button onclick="copyFormLink('https://docs.google.com/forms/d/13gei_pBeiKeaUd4ttcXKmDekl2DNQPTzsEKZdBWXYOQ/edit?ts=6ad89cb5', 'Cultural Performances')"
+                                class="w-full py-1.5 px-3 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-[11px] font-medium flex items-center justify-center gap-1.5 transition">
+                            <i class="fa-regular fa-copy text-xs"></i> Copy Link
+                        </button>
+                    </div>
+
+                    <div class="flex flex-col items-center bg-white p-1.5 rounded-xl shadow-md border border-slate-700 flex-shrink-0">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&amp;data=https%3A%2F%2Fdocs.google.com%2Fforms%2Fd%2F13gei_pBeiKeaUd4ttcXKmDekl2DNQPTzsEKZdBWXYOQ%2Fedit%3Fts%3D6ad89cb5&amp;color=0f172a"
+                             alt="QR Code" class="w-16 h-16 rounded object-cover"
+                             onerror="this.onerror=null; this.src='https://placehold.co/150x150/ffffff/0f172a?text=QR+Code';">
+                        <span class="text-[9px] font-bold text-slate-700 mt-1 uppercase tracking-tighter">Scan to Apply</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Ramp Walk -->
+            <div class="activity-card cultural glass-panel rounded-2xl p-5 border border-slate-800 hover:border-purple-500/50 transition duration-300 flex flex-col justify-between group shadow-lg">
+                <div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="px-2.5 py-1 rounded-md bg-purple-500/10 text-purple-400 text-[10px] font-bold uppercase tracking-wider border border-purple-500/20">
+                            <i class="fa-solid fa-person-walking-luggage mr-1"></i> Fashion Show
+                        </span>
+                        <span class="text-[11px] font-semibold text-emerald-400 flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Open
+                        </span>
+                    </div>
+
+                    <h4 class="text-xl font-bold text-white group-hover:text-purple-300 transition">Ramp Walk</h4>
+                    
+                    <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+                        Fashion Show featuring Traditional, Fusion, and Contemporary attire styles. Walk the runway!
+                    </p>
+
+                    <div class="mt-4 pt-3 border-t border-slate-800/80 grid grid-cols-2 gap-2 text-[11px] text-slate-300">
+                        <div><i class="fa-regular fa-clock text-purple-400 mr-1"></i> Oct 31, Afternoon</div>
+                        <div><i class="fa-solid fa-shirt text-pink-400 mr-1"></i> Traditional | Fusion</div>
+                    </div>
+                </div>
+
+                <div class="mt-5 pt-4 border-t border-slate-800 flex items-center gap-4">
+                    <div class="flex-1 space-y-2">
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLScVln6c3K_ALtROvbq5UuPqvw6rKHm7PEM2h_Ob4cSRshM6vg/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer"
+                           class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-purple-600/20 transition active:scale-[0.98]">
+                            <span>Register via Form</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </a>
+                        <button onclick="copyFormLink('https://docs.google.com/forms/d/e/1FAIpQLScVln6c3K_ALtROvbq5UuPqvw6rKHm7PEM2h_Ob4cSRshM6vg/viewform?usp=publish-editor', 'Ramp Walk')"
+                                class="w-full py-1.5 px-3 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-[11px] font-medium flex items-center justify-center gap-1.5 transition">
+                            <i class="fa-regular fa-copy text-xs"></i> Copy Link
+                        </button>
+                    </div>
+
+                    <div class="flex flex-col items-center bg-white p-1.5 rounded-xl shadow-md border border-slate-700 flex-shrink-0">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&amp;data=https%3A%2F%2Fdocs.google.com%2Fforms%2Fd%2Fe%2F1FAIpQLScVln6c3K_ALtROvbq5UuPqvw6rKHm7PEM2h_Ob4cSRshM6vg%2Fviewform%3Fusp%3Dpublish-editor&amp;color=0f172a"
+                             alt="QR Code" class="w-16 h-16 rounded object-cover"
+                             onerror="this.onerror=null; this.src='https://placehold.co/150x150/ffffff/0f172a?text=QR+Code';">
+                        <span class="text-[9px] font-bold text-slate-700 mt-1 uppercase tracking-tighter">Scan to Apply</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. ECLAT: Master & Miss -->
+            <div class="activity-card cultural glass-panel rounded-2xl p-5 border border-slate-800 hover:border-purple-500/50 transition duration-300 flex flex-col justify-between group shadow-lg">
+                <div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="px-2.5 py-1 rounded-md bg-purple-500/10 text-purple-400 text-[10px] font-bold uppercase tracking-wider border border-purple-500/20">
+                            <i class="fa-solid fa-crown mr-1"></i> Pageant
+                        </span>
+                        <span class="text-[11px] font-semibold text-emerald-400 flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Open
+                        </span>
+                    </div>
+
+                    <img src="img/ECLAT.png" alt="ECLAT Master and Miss 2026 poster" class="w-full h-64 object-contain rounded-xl mb-4 bg-slate-950/60">
+
+                    <h4 class="text-xl font-bold text-white group-hover:text-purple-300 transition">ECLAT: Master &amp; Miss 2026</h4>
+                    <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+                        Step into the spotlight and compete for the titles of Master and Miss at SRUJAN 2026.
+                    </p>
+                    <div class="mt-4 pt-3 border-t border-slate-800/80 grid grid-cols-2 gap-2 text-[11px] text-slate-300">
+                        <div><i class="fa-regular fa-clock text-purple-400 mr-1"></i> Oct 31</div>
+                        <div><i class="fa-solid fa-users text-pink-400 mr-1"></i> Individual</div>
+                    </div>
+                </div>
+
+                <div class="mt-5 pt-4 border-t border-slate-800 flex items-center gap-4">
+                    <div class="flex-1 space-y-2">
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSc_q2y3gFpx8jzJHdqyp5P0d0rFZxawSzjmkFKpq4Dc2vxmrA/viewform" target="_blank" rel="noopener noreferrer"
+                           class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-purple-600/20 transition active:scale-[0.98]">
+                            <span>Register via Form</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </a>
+                        <button onclick="copyFormLink('https://docs.google.com/forms/d/e/1FAIpQLSc_q2y3gFpx8jzJHdqyp5P0d0rFZxawSzjmkFKpq4Dc2vxmrA/viewform', 'ECLAT: Master &amp; Miss 2026')"
+                                class="w-full py-1.5 px-3 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-[11px] font-medium flex items-center justify-center gap-1.5 transition">
+                            <i class="fa-regular fa-copy text-xs"></i> Copy Link
+                        </button>
+                    </div>
+                    <div class="flex flex-col items-center bg-white p-1.5 rounded-xl shadow-md border border-slate-700 flex-shrink-0">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&amp;data=https%3A%2F%2Fdocs.google.com%2Fforms%2Fd%2Fe%2F1FAIpQLSc_q2y3gFpx8jzJHdqyp5P0d0rFZxawSzjmkFKpq4Dc2vxmrA%2Fviewform&amp;color=0f172a"
+                             alt="ECLAT registration QR Code" class="w-16 h-16 rounded object-cover"
+                             onerror="this.onerror=null; this.src='https://placehold.co/150x150/ffffff/0f172a?text=QR+Code';">
+                        <span class="text-[9px] font-bold text-slate-700 mt-1 uppercase tracking-tighter">Scan to Apply</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Quiz Competition -->
+            <div class="activity-card academic glass-panel rounded-2xl p-5 border border-slate-800 hover:border-cyan-500/50 transition duration-300 flex flex-col justify-between group shadow-lg">
+                <div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="px-2.5 py-1 rounded-md bg-cyan-500/10 text-cyan-400 text-[10px] font-bold uppercase tracking-wider border border-cyan-500/20">
+                            <i class="fa-solid fa-lightbulb mr-1"></i> Knowledge
+                        </span>
+                        <span class="text-[11px] font-semibold text-emerald-400 flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Open
+                        </span>
+                    </div>
+
+                    <img src="img/quizCompetition.png" alt="Entangled Epiphanies quiz competition poster" class="w-full h-64 object-contain rounded-xl mb-4 bg-slate-950/60">
+
+                    <h4 class="text-xl font-bold text-white group-hover:text-cyan-300 transition">Quiz Competition</h4>
+
+                    <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+                        Test your knowledge beyond textbooks! Rapid-fire trivia covering science, culture, general knowledge & current affairs.
+                    </p>
+
+                    <div class="mt-4 pt-3 border-t border-slate-800/80 grid grid-cols-2 gap-2 text-[11px] text-slate-300">
+                        <div><i class="fa-regular fa-clock text-purple-400 mr-1"></i> Oct 31, 11:00 AM</div>
+                        <div><i class="fa-solid fa-users text-pink-400 mr-1"></i> Teams of 2</div>
+                    </div>
+                </div>
+
+                <div class="mt-5 pt-4 border-t border-slate-800">
+                    <p class="text-xs text-slate-400">Registration details will be announced soon.</p>
+                </div>
+            </div>
+
+            <!-- 5. Face Painting -->
+            <div class="activity-card creative glass-panel rounded-2xl p-5 border border-slate-800 hover:border-amber-500/50 transition duration-300 flex flex-col justify-between group shadow-lg">
+                <div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-400 text-[10px] font-bold uppercase tracking-wider border border-amber-500/20">
+                            <i class="fa-solid fa-paintbrush mr-1"></i> Art & Design
+                        </span>
+                        <span class="text-[11px] font-semibold text-emerald-400 flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Open
+                        </span>
+                    </div>
+
+                    <img src="img/insectopia.jpeg" alt="Insectopia face painting competition poster" class="w-full h-64 object-contain rounded-xl mb-4 bg-slate-950/60">
+
+                    <h4 class="text-xl font-bold text-white group-hover:text-amber-300 transition">Face Painting</h4>
+                    
+                    <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+                        Colours, Creativity, Expression! Express imaginative themes directly onto your canvas using safe face paints.
+                    </p>
+
+                    <div class="mt-4 pt-3 border-t border-slate-800/80 grid grid-cols-2 gap-2 text-[11px] text-slate-300">
+                        <div><i class="fa-regular fa-clock text-purple-400 mr-1"></i> Oct 31, 12:00 PM</div>
+                        <div><i class="fa-solid fa-user-group text-pink-400 mr-1"></i> Artist + Model</div>
+                    </div>
+                </div>
+
+                <div class="mt-5 pt-4 border-t border-slate-800 flex items-center gap-4">
+                    <div class="flex-1 space-y-2">
+                        <a href="https://q.me-qr.com/vcwyea0r" target="_blank" rel="noopener noreferrer"
+                           class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-amber-600/20 transition active:scale-[0.98]">
+                            <span>Register via Form</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </a>
+                        <button onclick="copyFormLink('https://q.me-qr.com/vcwyea0r', 'Face Painting')"
+                                class="w-full py-1.5 px-3 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-[11px] font-medium flex items-center justify-center gap-1.5 transition">
+                            <i class="fa-regular fa-copy text-xs"></i> Copy Link
+                        </button>
+                    </div>
+                    <div class="flex flex-col items-center bg-white p-1.5 rounded-xl shadow-md border border-slate-700 flex-shrink-0">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&amp;data=https%3A%2F%2Fq.me-qr.com%2Fvcwyea0r&amp;color=0f172a"
+                             alt="Face Painting registration QR Code" class="w-16 h-16 rounded object-cover"
+                             onerror="this.onerror=null; this.src='https://placehold.co/150x150/ffffff/0f172a?text=QR+Code';">
+                        <span class="text-[9px] font-bold text-slate-700 mt-1 uppercase tracking-tighter">Scan to Apply</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. Photography & Art Exhibit -->
+            <div class="activity-card creative glass-panel rounded-2xl p-5 border border-slate-800 hover:border-pink-500/50 transition duration-300 flex flex-col justify-between group shadow-lg">
+                <div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="px-2.5 py-1 rounded-md bg-pink-500/10 text-pink-400 text-[10px] font-bold uppercase tracking-wider border border-pink-500/20">
+                            <i class="fa-solid fa-camera mr-1"></i> Art & Gallery
+                        </span>
+                        <span class="text-[11px] font-semibold text-emerald-400 flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Open
+                        </span>
+                    </div>
+
+                    <img src="img/photographyVideography.png" alt="Photography and videography competition poster" class="w-full h-64 object-contain rounded-xl mb-4 bg-slate-950/60">
+
+                    <h4 class="text-xl font-bold text-white group-hover:text-pink-300 transition">Photography & Art Exhibit</h4>
+                    
+                    <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+                        Capture | Create | Inspire. Display your finest photographs, paintings, and digital artwork in the campus gallery.
+                    </p>
+
+                    <div class="mt-4 pt-3 border-t border-slate-800/80 grid grid-cols-2 gap-2 text-[11px] text-slate-300">
+                        <div><i class="fa-regular fa-clock text-purple-400 mr-1"></i> Oct 31, All Day</div>
+                        <div><i class="fa-solid fa-user text-pink-400 mr-1"></i> Individual Entries</div>
+                    </div>
+                </div>
+
+                <div class="mt-5 pt-4 border-t border-slate-800 flex items-center gap-4">
+                    <div class="flex-1 space-y-2">
+                        <a href="https://forms.gle/vD4VLDdnfaHu7AkX7" target="_blank" rel="noopener noreferrer"
+                           class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-pink-600/20 transition active:scale-[0.98]">
+                            <span>Register via Form</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </a>
+                        <button onclick="copyFormLink('https://forms.gle/vD4VLDdnfaHu7AkX7', 'Photography & Art Exhibit')"
+                                class="w-full py-1.5 px-3 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-[11px] font-medium flex items-center justify-center gap-1.5 transition">
+                            <i class="fa-regular fa-copy text-xs"></i> Copy Link
+                        </button>
+                    </div>
+
+                    <div class="flex flex-col items-center bg-white p-1.5 rounded-xl shadow-md border border-slate-700 flex-shrink-0">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&amp;data=https%3A%2F%2Fforms.gle%2FvD4VLDdnfaHu7AkX7&amp;color=0f172a"
+                             alt="QR Code" class="w-16 h-16 rounded object-cover"
+                             onerror="this.onerror=null; this.src='https://placehold.co/150x150/ffffff/0f172a?text=QR+Code';">
+                        <span class="text-[9px] font-bold text-slate-700 mt-1 uppercase tracking-tighter">Scan to Apply</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7. Treasure Hunt -->
+            <div class="activity-card creative glass-panel rounded-2xl p-5 border border-slate-800 hover:border-amber-500/50 transition duration-300 flex flex-col justify-between group shadow-lg">
+                <div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-400 text-[10px] font-bold uppercase tracking-wider border border-amber-500/20">
+                            <i class="fa-solid fa-map-location-dot mr-1"></i> Adventure
+                        </span>
+                        <span class="text-[11px] font-semibold text-emerald-400 flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Open
+                        </span>
+                    </div>
+
+                    <img src="img/mazeOfMysteries.jpeg" alt="Maze of Mysteries treasure hunt poster" class="w-full h-64 object-contain rounded-xl mb-4 bg-slate-950/60">
+
+                    <h4 class="text-xl font-bold text-white group-hover:text-amber-300 transition">Treasure Hunt</h4>
+                    
+                    <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+                        Explore | Solve | Win. Decode cryptic clues hidden across campus to claim the ultimate championship prize!
+                    </p>
+
+                    <div class="mt-4 pt-3 border-t border-slate-800/80 grid grid-cols-2 gap-2 text-[11px] text-slate-300">
+                        <div><i class="fa-regular fa-clock text-purple-400 mr-1"></i> Oct 31, 02:00 PM</div>
+                        <div><i class="fa-solid fa-users text-pink-400 mr-1"></i> Squad: 3-4</div>
+                    </div>
+                </div>
+
+                <div class="mt-5 pt-4 border-t border-slate-800 flex items-center gap-4">
+                    <div class="flex-1 space-y-2">
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLScMVNxoRqvKvTuTmAPt1ylHIKzEaj3VOpWCZaPab-C50lyI2A/viewform" target="_blank" rel="noopener noreferrer"
+                           class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-500 hover:to-yellow-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-amber-600/20 transition active:scale-[0.98]">
+                            <span>Register via Form</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </a>
+                        <button onclick="copyFormLink('https://docs.google.com/forms/d/e/1FAIpQLScMVNxoRqvKvTuTmAPt1ylHIKzEaj3VOpWCZaPab-C50lyI2A/viewform', 'Treasure Hunt')"
+                                class="w-full py-1.5 px-3 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-[11px] font-medium flex items-center justify-center gap-1.5 transition">
+                            <i class="fa-regular fa-copy text-xs"></i> Copy Link
+                        </button>
+                    </div>
+
+                    <div class="flex flex-col items-center bg-white p-1.5 rounded-xl shadow-md border border-slate-700 flex-shrink-0">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&amp;data=https%3A%2F%2Fdocs.google.com%2Fforms%2Fd%2Fe%2F1FAIpQLScMVNxoRqvKvTuTmAPt1ylHIKzEaj3VOpWCZaPab-C50lyI2A%2Fviewform&amp;color=0f172a"
+                             alt="QR Code" class="w-16 h-16 rounded object-cover"
+                             onerror="this.onerror=null; this.src='https://placehold.co/150x150/ffffff/0f172a?text=QR+Code';">
+                        <span class="text-[9px] font-bold text-slate-700 mt-1 uppercase tracking-tighter">Scan to Apply</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 8. PPT Competition -->
+            <div class="activity-card academic glass-panel rounded-2xl p-5 border border-slate-800 hover:border-cyan-500/50 transition duration-300 flex flex-col justify-between group shadow-lg">
+                <div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="px-2.5 py-1 rounded-md bg-cyan-500/10 text-cyan-400 text-[10px] font-bold uppercase tracking-wider border border-cyan-500/20">
+                            <i class="fa-solid fa-chart-pie mr-1"></i> Presentation
+                        </span>
+                        <span class="text-[11px] font-semibold text-emerald-400 flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Open
+                        </span>
+                    </div>
+
+                    <img src="img/visionVerse.jpeg" alt="Srujan Vision Verse PowerPoint presentation competition poster" class="w-full h-64 object-contain rounded-xl mb-4 bg-slate-950/60">
+
+                    <h4 class="text-xl font-bold text-white group-hover:text-cyan-300 transition">PPT Competition</h4>
+                    
+                    <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+                        Present | Inform | Inspire. Show off your slide deck skills and communication power on emerging topics.
+                    </p>
+
+                    <div class="mt-4 pt-3 border-t border-slate-800/80 grid grid-cols-2 gap-2 text-[11px] text-slate-300">
+                        <div><i class="fa-regular fa-clock text-purple-400 mr-1"></i> Oct 31, 10:30 AM</div>
+                        <div><i class="fa-solid fa-user text-pink-400 mr-1"></i> Solo / Duo</div>
+                    </div>
+                </div>
+
+                <div class="mt-5 pt-4 border-t border-slate-800">
+                    <p class="text-xs text-slate-400">Scan the poster QR code to register.</p>
+                </div>
+            </div>
+
+            <!-- 9. Model Making -->
+            <div class="activity-card academic glass-panel rounded-2xl p-5 border border-slate-800 hover:border-purple-500/50 transition duration-300 flex flex-col justify-between group shadow-lg">
+                <div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="px-2.5 py-1 rounded-md bg-purple-500/10 text-purple-400 text-[10px] font-bold uppercase tracking-wider border border-purple-500/20">
+                            <i class="fa-solid fa-cubes mr-1"></i> Science & Tech
+                        </span>
+                        <span class="text-[11px] font-semibold text-emerald-400 flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Open
+                        </span>
+                    </div>
+
+                    <img src="img/innovista.png" alt="Innovista science model making competition poster" class="w-full h-64 object-contain rounded-xl mb-4 bg-slate-950/60">
+
+                    <h4 class="text-xl font-bold text-white group-hover:text-purple-300 transition">Model Making</h4>
+                    
+                    <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+                        Imagine | Build | Create. Construct working or static scientific and technological models demonstrating core concepts.
+                    </p>
+
+                    <div class="mt-4 pt-3 border-t border-slate-800/80 grid grid-cols-2 gap-2 text-[11px] text-slate-300">
+                        <div><i class="fa-regular fa-clock text-purple-400 mr-1"></i> Oct 31, 01:00 PM</div>
+                        <div><i class="fa-solid fa-users text-pink-400 mr-1"></i> Team: 1-3</div>
+                    </div>
+                </div>
+
+                <div class="mt-5 pt-4 border-t border-slate-800">
+                    <p class="text-xs text-slate-400">Scan the poster QR code to register.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ORGANIZERS & COORDINATORS PANEL -->
+        <section class="glass-panel rounded-2xl p-6 border border-slate-800 space-y-4">
+            <h3 class="text-base font-bold text-slate-100 flex items-center gap-2">
+                <i class="fa-solid fa-user-shield text-purple-400"></i> Event Organizing Team
+            </h3>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                <!-- Faculty Coordinators -->
+                <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800 space-y-2">
+                    <p class="font-bold text-purple-400 uppercase tracking-wider text-[11px]">Faculty Coordinators</p>
+                    <ul class="space-y-1 text-slate-300">
+                        <li class="font-semibold text-slate-100"><i class="fa-solid fa-award text-amber-400 mr-1.5"></i>Prof. A K Samant <span class="text-slate-400 font-normal">(Principal, GSS)</span></li>
+                        <li><i class="fa-solid fa-user-tie text-purple-400 mr-1.5"></i>R.T. Katamble</li>
+                        <li><i class="fa-solid fa-user-tie text-purple-400 mr-1.5"></i>Sandeep Deshpande</li>
+                    </ul>
+                </div>
+
+                <!-- Student Coordinators -->
+                <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800 space-y-2">
+                    <p class="font-bold text-pink-400 uppercase tracking-wider text-[11px]">Student Coordinators</p>
+                    <ul class="space-y-1 text-slate-300">
+                        <li class="font-medium"><i class="fa-solid fa-graduation-cap text-pink-400 mr-1.5"></i>Vinodkumar Sogali</li>
+                        <li class="font-medium"><i class="fa-solid fa-graduation-cap text-pink-400 mr-1.5"></i>Srushti Tushar Barde</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="glass-panel rounded-3xl p-6 sm:p-8 text-center space-y-4">
+            <div>
+                <h4 class="text-base font-extrabold text-white">Govindram Seksaria Science Autonomous College</h4>
+                <p class="text-xs text-purple-400 font-semibold mt-0.5">GSS Degree • SRUJAN 2026</p>
+            </div>
+
+            <div class="pt-3 border-t border-slate-800 text-xs text-slate-400 flex flex-col sm:flex-row justify-between items-center gap-2">
+                <p>© 2026 SRUJAN Fest. All rights reserved.</p>
+                <p class="flex items-center gap-1 text-slate-400">
+                    Culture <span class="text-purple-400">•</span> Creativity <span class="text-pink-400">•</span> Curiosity <span class="text-cyan-400">•</span> Connection
+                </p>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- CUSTOM TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="glass-panel px-4 py-3 rounded-xl border border-purple-500/50 shadow-2xl flex items-center gap-3 bg-slate-900/90 text-xs text-white">
+            <div id="toast-icon" class="p-1 rounded-lg bg-purple-500/20 text-purple-400">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <span id="toast-message" class="font-medium">Action completed successfully!</span>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // --- 1. COUNTDOWN TIMER LOGIC (Target: 31st October 2026) ---
+        const eventDate = new Date("October 31, 2026 09:00:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const difference = eventDate - now;
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById('days').innerText = days < 10 ? '0' + days : days;
+                document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
+                document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
+                document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
+            } else {
+                document.getElementById('days').innerText = '00';
+                document.getElementById('hours').innerText = '00';
+                document.getElementById('minutes').innerText = '00';
+                document.getElementById('seconds').innerText = '00';
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // --- 2. CATEGORY FILTER LOGIC ---
+        function filterCategory(category) {
+            const cards = document.querySelectorAll('.activity-card');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            let visibleCount = 0;
+
+            filterBtns.forEach(btn => {
+                btn.classList.remove('bg-purple-600', 'text-white', 'shadow-lg', 'shadow-purple-600/30');
+                btn.classList.add('bg-slate-800/80', 'text-slate-300');
+            });
+
+            event.currentTarget.classList.remove('bg-slate-800/80', 'text-slate-300');
+            event.currentTarget.classList.add('bg-purple-600', 'text-white', 'shadow-lg', 'shadow-purple-600/30');
+
+            cards.forEach(card => {
+                if (category === 'all' || card.classList.contains(category)) {
+                    card.style.display = 'flex';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            document.getElementById('activity-count').innerText = `Showing ${visibleCount} Event${visibleCount !== 1 ? 's' : ''}`;
+        }
+
+        // --- 3. COPY LINK & TOAST UTILITY ---
+        function toast(msg) {
+            const toastEl = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            toastMsg.innerText = msg;
+
+            toastEl.classList.remove('translate-y-20', 'opacity-0');
+            toastEl.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toastEl.classList.remove('translate-y-0', 'opacity-100');
+                toastEl.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        function copyFormLink(url, activityName) {
+            const dummy = document.createElement('input');
+            document.body.appendChild(dummy);
+            dummy.value = url;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+
+            toast(`Link copied for ${activityName}!`);
+        }
+
+        function copyPageUrl() {
+            const dummy = document.createElement('input');
+            document.body.appendChild(dummy);
+            dummy.value = window.location.href;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+
+            toast("SRUJAN '26 page link copied to clipboard!");
+        }
+    </script>
+</body>
+</html>
